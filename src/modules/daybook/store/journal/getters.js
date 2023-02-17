@@ -2,9 +2,14 @@
 // return state
 // }
 
-export const getEtriesByTerm = (/*state*/)=>{
+export const getEntriesByTerm = ( state ) => ( term = '' ) => {
 
-}
-export const getEntriesById = (/*state*/)=>{
+    if ( term.length === 0 ) return state.entries
 
+    return state.entries.filter( entry => entry.text.toLowerCase().includes( term.toLocaleLowerCase() ) )
 }
+export const getEntryById = (state) =>  (id='')=>{
+const entry = state.entries.find(entry => entry.id ===id)
+if(!entry)return
+    return {...entry} //TO DO
+};
